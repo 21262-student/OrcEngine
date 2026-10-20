@@ -152,7 +152,7 @@ The rendering architecture is detailed in [ADR 0001](docs/adr/0001-collapse-2d-r
   - Procedural parameters: `shapeType` (`0.0f` = standard quad, `1.0f` = procedural circle), `borderThickness`, `innerRadius`, and `radius`.
 - **Texturable & Geometry Submission**:
   - `Texturable` is a non-templated `Transformable` base class holding four `Vertex` instances directly in `m_vertices`.
-  - High-level primitives (`Sprite`, `Rectangle`, `Circle`) inherit from `Texturable`, allowing zero-transcoding memory copies directly into the batch buffer.
+  - High-level primitives (`Sprite`, `Rectangle`, `Circle`) inherit from `Texturable`, allowing zero-transcoding memory copies directly into the batch buffer. Callers submit quad geometry exclusively via `Rectangle` or `Sprite` (raw `drawQuad` overloads are removed from `Renderer`).
   - `Text` stores a dynamic `std::vector<Vertex>` directly, which is appended into the batch buffer without per-field conversion.
 - **Texture Slot Allocation**:
   - `MAX_TEXTURE_SLOTS = 32`. Textures submitted during draw calls are deduplicated into `m_textures`.

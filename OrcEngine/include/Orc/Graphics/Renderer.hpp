@@ -36,12 +36,6 @@ public:
 	void begin(const Camera& camera) { beginScene(camera); }
 	void end() { endScene(); }
 
-	// Raw quad submission
-	void drawQuad(const Vector3f& position, const Vector2f& size, const Color& color);
-	void drawQuad(const Vector3f& position, const Vector2f& size, Ref<Texture> texture, const Color& tintColor = Color());
-	void drawQuad(const Matrix& transform, const Vector2f& size, const Color& color);
-	void drawQuad(const Matrix& transform, const Vector2f& size, Ref<Texture> texture, const Color& tintColor = Color());
-
 	// High-level shape overloads
 	void draw(const Sprite& sprite);
 	void draw(const Rectangle& rectangle);
